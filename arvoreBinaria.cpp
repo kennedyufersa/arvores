@@ -27,6 +27,22 @@ Node *inserir(Node *r, Aluno a) {
     return r;
 }
 
+void print(Aluno A) {
+    printf("Id: %d\nNome: %s\nNota: %f\n\n", A.Id, A.nome, A.nota);
+}
+
+void preordem(Node *raiz) {
+    if (raiz != 0) {
+        print(raiz->aluno);
+    }
+    if (raiz->esq != 0) {
+        preordem(raiz->esq);
+    }
+    if (raiz->dir != 0) {
+        preordem(raiz->dir);
+    }
+}
+
 int main(int argc, char const *argv[]) {
     Node *raiz = 0;
 
