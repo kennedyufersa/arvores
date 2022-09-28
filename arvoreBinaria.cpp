@@ -42,3 +42,26 @@ void preordem(Node *raiz) {
         preordem(raiz->dir);
     }
 }
+void posordem(Node *raiz) {
+    if (raiz->esq != 0) {
+        posordem(raiz->esq);
+    }
+    if (raiz->dir != 0) {
+        posordem(raiz->dir);
+    }
+    if (raiz != 0) {
+        print(raiz->aluno);
+    }
+}
+
+void inordem(Node *raiz) {
+    if (raiz->esq != 0) {
+        inordem(raiz->esq);
+    }
+    if (raiz != 0) {
+        print(raiz->aluno);
+    }
+    if (raiz->dir != 0) {
+        inordem(raiz->dir);
+    }
+}
