@@ -71,6 +71,7 @@ Aluno sucessor(Node *r){
         s = r->esq->aluno;
         r = r->esq;
     }
+    r->esq = 0;
     return s;
 }
 
