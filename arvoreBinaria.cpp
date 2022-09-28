@@ -27,37 +27,75 @@ Node *inserir(Node *r, Aluno a) {
     return r;
 }
 
-Node *buscar(Node *r, matricula Id){
-    if(r == 0){
+Node *buscar(Node *r, matricula Id) {
+    if (r == 0) {
         return r;
     }
     Node *res = r;
-    if(res->aluno.Id == Id){
+    if (res->aluno.Id == Id) {
         return res;
     }
-    if(Id < r->aluno.Id){
+    if (Id < r->aluno.Id) {
         res = buscar(r->esq, Id);
-    }else if(Id > r->aluno.Id){
+    } else if (Id > r->aluno.Id) {
         res = buscar(r->dir, Id);
     }
     return res;
 }
 
-// Node *inserir(Node *r, Aluno a) {
+// Node *remover(Node *r, matricula Id) {
+//     // Valor não encontrado
 //     if (r == 0) {
 //         return r;
 //     }
-//     if(r->aluno.Id == a.Id){
-
-//     }
-//     if (a.Id < r->aluno.Id) {
-//         r->esq = inserir(r->esq, a);
-//     } else if (a.Id > r->aluno.Id) {
-//         r->dir = inserir(r->dir, a);
+//     if (r->aluno.Id == Id) {
+//         if (r->esq == 0 && r->dir == 0) {
+//             free(r);
+//             r = 0;
+//             return r;
+//         }
+//     } else {
+//         if (r->aluno.Id < Id) {
+//             r->esq = remover(r->esq, Id);
+//         } else {
+//             r->dir = remover(r->dir, Id);
+//         }
+//         return r;
 //     }
 //     return r;
 // }
 
+Aluno sucessor(Node *r){
+    Aluno s = r->aluno;
+    while(r->esq != 0){
+        s = r->esq->aluno;
+        r = r->esq;
+    }
+    return s;
+}
+
+Node* remover(Node* r, matricula Id){
+    if(r == 0){
+        return r;
+    }
+    if(Id < r->aluno.Id){
+        r->esq = remover(r->esq, Id);
+    }else if(Id > r->aluno.Id){
+        r->dir = remover(r->dir, Id);
+    }else{
+
+        if(r->esq == 0){
+            return r->dir;
+        }if(r->dir == 0){
+            return r->esq;
+        }
+
+        r->aluno = sucessor(r->dir);
+        r->dir = remover(r->dir, r->aluno.Id);
+
+    }
+    return r;
+}
 
 void print(Aluno A) {
     printf("Id: %d\nNome: %s\nNota: %f\n\n", A.Id, A.nome, A.nota);
@@ -97,5 +135,3 @@ void inordem(Node *raiz) {
         inordem(raiz->dir);
     }
 }
-
-
