@@ -16,5 +16,7 @@ int main() {
     // Exibindo em pre-ordem
     preordem(raiz);
 
+    //Buscando um aluno pelo Id
+    Node* aluno = buscar(raiz, 2019011352);
     return 0;
 }

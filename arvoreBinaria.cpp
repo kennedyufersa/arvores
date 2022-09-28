@@ -27,6 +27,38 @@ Node *inserir(Node *r, Aluno a) {
     return r;
 }
 
+Node *buscar(Node *r, matricula Id){
+    if(r == 0){
+        return r;
+    }
+    Node *res = r;
+    if(res->aluno.Id == Id){
+        return res;
+    }
+    if(Id < r->aluno.Id){
+        res = buscar(r->esq, Id);
+    }else if(Id > r->aluno.Id){
+        res = buscar(r->dir, Id);
+    }
+    return res;
+}
+
+// Node *inserir(Node *r, Aluno a) {
+//     if (r == 0) {
+//         return r;
+//     }
+//     if(r->aluno.Id == a.Id){
+
+//     }
+//     if (a.Id < r->aluno.Id) {
+//         r->esq = inserir(r->esq, a);
+//     } else if (a.Id > r->aluno.Id) {
+//         r->dir = inserir(r->dir, a);
+//     }
+//     return r;
+// }
+
+
 void print(Aluno A) {
     printf("Id: %d\nNome: %s\nNota: %f\n\n", A.Id, A.nome, A.nota);
 }
@@ -65,3 +97,5 @@ void inordem(Node *raiz) {
         inordem(raiz->dir);
     }
 }
+
+
