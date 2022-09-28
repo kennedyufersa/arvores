@@ -1,5 +1,5 @@
-#ifndef ALUNO_C
-#define ALUNO_C
+#ifndef ALUNO_CPP
+#define ALUNO_CPP
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,21 +27,5 @@ Aluno criarAluno2(const char *nome, matricula Id, Nota n){
   novo.Id = Id;
   return novo;
 }
-
-/*int main(int argc, char const *argv[]){
-  Aluno* a = criarAluno("Kennedy\0", 10, 8.);
-  printf("Nome: %s\n", a->nome);
-  printf("Id: %d\n", a->Id);
-  printf("Nota: %f\n", a->nota);
-
-  Aluno b = criarAluno2("Kennedy\0", 10, 8.);
-  printf("Nome: %s\n", b.nome);
-  printf("Id: %d\n", b.Id);
-  printf("Nota: %f\n", b.nota);
-  return 0;
-}*/
-
-
-
 
 #endif

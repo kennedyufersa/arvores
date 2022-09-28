@@ -1,4 +1,4 @@
-#include "Aluno.c"
+#include "Aluno.cpp"
 #include <stdio.h>
 
 struct Node {
